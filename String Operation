@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Operations</title>
+</head>
+<body>
+
+<h3>String Operations</h3>
+
+<label>Enter a string: </label>
+<input type="text" id="inputString" placeholder="Enter text here">
+
+<button onclick="performOperations()">Perform Operations</button>
+
+<p id="original"></p>
+<p id="reversed"></p>
+<p id="replaced"></p>
+<p id="palindrome"></p>
+
+<script>
+  // Function to reverse a string
+  function reverseString(str) {
+    return str.split('').reverse().join('');
+  }
+
+  // Function to replace characters in a string
+  function replaceCharacters(str, oldChar, newChar) {
+    return str.split(oldChar).join(newChar);
+  }
+
+  // Function to check if the string is a palindrome
+  function isPalindrome(str) {
+    const reversedStr = reverseString(str);
+    return str === reversedStr;
+  }
+
+  // Function to perform all operations
+  function performOperations() {
+    const inputString = document.getElementById("inputString").value;
+
+    // Display the original string
+    document.getElementById("original").innerText = "Original String: " + inputString;
+
+    // Reverse the string
+    document.getElementById("reversed").innerText = "Reversed String: " + reverseString(inputString);
+
+    // Replace characters ('a' with 'o' as an example)
+    const replacedString = replaceCharacters(inputString, 'a', 'o');
+    document.getElementById("replaced").innerText = "Replaced String (replace 'a' with 'o'): " + replacedString;
+
+    // Check if the string is a palindrome
+    document.getElementById("palindrome").innerText = "Is Palindrome? " + isPalindrome(inputString);
+  }
+</script>
+
+</body>
+</html>
