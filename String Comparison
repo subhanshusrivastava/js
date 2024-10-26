@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Comparison</title>
+</head>
+<body>
+
+<h3>String Comparison</h3>
+
+<label>Enter String 1: </label>
+<input type="text" id="string1" placeholder="Enter first string">
+
+<label>Enter String 2: </label>
+<input type="text" id="string2" placeholder="Enter second string">
+
+<button onclick="compareStrings()">Compare Strings</button>
+
+<div id="results">
+  <p id="exact"></p>
+  <p id="caseInsensitive"></p>
+  <p id="localeCompare"></p>
+  <p id="lexicalCompare"></p>
+  <p id="lengthCompare"></p>
+</div>
+
+<script>
+  function compareStrings() {
+    // Getting input values
+    const str1 = document.getElementById("string1").value;
+    const str2 = document.getElementById("string2").value;
+
+    // 1. Exact comparison (case-sensitive)
+    if (str1 === str2) {
+      document.getElementById("exact").innerText = "Exact Comparison: The strings are exactly the same.";
+    } else {
+      document.getElementById("exact").innerText = "Exact Comparison: The strings are different.";
+    }
+
+    // 2. Case-insensitive comparison
+    if (str1.toLowerCase() === str2.toLowerCase()) {
+      document.getElementById("caseInsensitive").innerText = "Case-Insensitive Comparison: The strings are the same ignoring case.";
+    } else {
+      document.getElementById("caseInsensitive").innerText = "Case-Insensitive Comparison: The strings are different.";
+    }
+
+    // 3. Using localeCompare (for sorting or international comparison)
+    const localeComparison = str1.localeCompare(str2);
+    if (localeComparison === 0) {
+      document.getElementById("localeCompare").innerText = "Locale Compare: The strings are equal.";
+    } else if (localeComparison < 0) {
+      document.getElementById("localeCompare").innerText = "Locale Compare: String 1 comes before String 2.";
+    } else {
+      document.getElementById("localeCompare").innerText = "Locale Compare: String 1 comes after String 2.";
+    }
+
+    // 4. Lexical (alphabetical) comparison
+    if (str1 < str2) {
+      document.getElementById("lexicalCompare").innerText = "Lexical Comparison: String 1 comes before String 2 alphabetically.";
+    } else if (str1 > str2) {
+      document.getElementById("lexicalCompare").innerText = "Lexical Comparison: String 1 comes after String 2 alphabetically.";
+    } else {
+      document.getElementById("lexicalCompare").innerText = "Lexical Comparison: The strings are alphabetically the same.";
+    }
+
+    // 5. Compare string lengths
+    if (str1.length === str2.length) {
+      document.getElementById("lengthCompare").innerText = "Length Comparison: Both strings have the same length.";
+    } else if (str1.length < str2.length) {
+      document.getElementById("lengthCompare").innerText = "Length Comparison: String 1 is shorter than String 2.";
+    } else {
+      document.getElementById("lengthCompare").innerText = "Length Comparison: String 1 is longer than String 2.";
+    }
+  }
+</script>
+
+</body>
+</html>
