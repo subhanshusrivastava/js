@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html><head><title>Area</title></head>
+
+<body>
+
+<h2>Calculate Area</h2>
+
+<button onclick="area_triangle()" id="btn">Area of Triangle</button>
+
+<br><br>
+
+<button onclick="area_circle()" id="btn">Area of Circle</button>
+
+<br><br>
+
+<button onclick="area_rectangle()" id="btn">Area of Rectangle</button>
+
+<br><br>
+
+<script>
+
+function area_triangle(){
+
+var s1=parseInt(prompt("Enter side 1 in cm:")); var s2=parseInt(prompt("Enter side 2 in cm:")); var s3=parseInt(prompt("Enter side 3 in cm:")); var s=(s1+s2+s3)/2;
+var area=Math.sqrt(s*((s-s1)*(s-s2)*(s-s3)));
+
+document.write("Area of triangle is "+area.toFixed(2)+" sq.cm"+"<br>");} function area_circle(){
+var r=parseInt(prompt("Enter radius in cm:")); var area=3.14*r*r;
+document.write("Area of circle is "+area.toFixed(2)+" sq.cm"+"<br>");} function area_rectangle(){
+var l=parseInt(prompt("Enter length in cm:"));
+
+var b=parseInt(prompt("Enter breadth in cm:")); var area=l*b;
+document.write("Area of rectangle is "+area.toFixed(2)+" sq.cm"+"<br>");}
+
+</script>
+
+</body>
+
+</html>
