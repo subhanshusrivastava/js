@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Object and Array Operations</title>
+</head>
+<body>
+
+<h3>Object and Array Operations</h3>
+
+<label>Enter initial array elements (comma separated): </label>
+<input type="text" id="arrayInput" placeholder="1, 2, 3">
+
+<label>Enter object name: </label>
+<input type="text" id="objectName" placeholder="Name">
+
+<label>Enter object age: </label>
+<input type="number" id="objectAge" placeholder="Age">
+
+<button onclick="performOperations()">Perform Operations</button>
+
+<div id="results">
+  <p id="originalArray"></p>
+  <p id="afterAppending"></p>
+  <p id="isArrayCheckMyArray"></p>
+  <p id="isArrayCheckNewObject"></p>
+</div>
+
+<script>
+  // Function to append an object to an array
+  function appendObjectToArray(arr, obj) {
+    arr.push(obj); // Append the object to the array
+    return arr;
+  }
+
+  // Function to check if an object is an array
+  function isArray(obj) {
+    return Array.isArray(obj); // Returns true if the object is an array
+  }
+
+  // Function to perform operations
+  function performOperations() {
+    // Get input values
+    let myArray = document.getElementById("arrayInput").value.split(',').map(Number);
+    
+    // Create new object from input values
+    let newObject = {
+      name: document.getElementById("objectName").value,
+      age: Number(document.getElementById("objectAge").value)
+    };
+
+    // Display the original array
+    document.getElementById("originalArray").innerText = "Original Array: " + myArray;
+
+    // 1. Append the object to the array
+    myArray = appendObjectToArray(myArray, newObject);
+    document.getElementById("afterAppending").innerText = "Array after appending object: " + JSON.stringify(myArray);
+
+    // 2. Check if 'myArray' is an array
+    document.getElementById("isArrayCheckMyArray").innerText = "Is 'myArray' an array? " + isArray(myArray);
+
+    // 3. Check if 'newObject' is an array
+    document.getElementById("isArrayCheckNewObject").innerText = "Is 'newObject' an array? " + isArray(newObject);
+  }
+</script>
+
+</body>
+</html>
