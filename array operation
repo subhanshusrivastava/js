@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Array Operations</title>
+</head>
+<body>
+
+<h3>Array Operations</h3>
+
+<label>Enter elements (comma separated): </label>
+<input type="text" id="arrayInput" placeholder="10, 20, 30, 40, 50">
+
+<label>Element to remove: </label>
+<input type="text" id="removeElement" placeholder="Element to remove">
+
+<button onclick="performArrayOperations()">Perform Operations</button>
+
+<div id="results">
+  <p id="original"></p>
+  <p id="afterRemoval"></p>
+  <p id="contains"></p>
+  <p id="emptied"></p>
+</div>
+
+<script>
+  // Function to remove a specific element from the array
+  function removeElement(arr, element) {
+    const index = arr.indexOf(element);
+    if (index > -1) {
+      arr.splice(index, 1); // Removes the element at the specified index
+    }
+    return arr;
+  }
+
+  // Function to check if an array contains a specified value
+  function containsElement(arr, element) {
+    return arr.includes(element);
+  }
+
+  // Function to empty an array
+  function emptyArray(arr) {
+    arr.length = 0; // Setting the length to 0 empties the array
+    return arr;
+  }
+
+  // Function to perform all array operations
+  function performArrayOperations() {
+    // Get input array and element to remove
+    let myArray = document.getElementById("arrayInput").value.split(',').map(Number);
+    const elementToRemove = Number(document.getElementById("removeElement").value);
+
+    // Display the original array
+    document.getElementById("original").innerText = "Original Array: " + myArray;
+
+    // 1. Remove a specific element
+    myArray = removeElement(myArray, elementToRemove);
+    document.getElementById("afterRemoval").innerText = "Array after removing " + elementToRemove + ": " + myArray;
+
+    // 2. Check if the array contains a specific value (20)
+    const hasTwenty = containsElement(myArray, 20);
+    document.getElementById("contains").innerText = "Array contains 20: " + hasTwenty;
+
+    // 3. Empty the array
+    myArray = emptyArray(myArray);
+    document.getElementById("emptied").innerText = "Array after emptying: " + myArray;
+  }
+</script>
+
+</body>
+</html>
